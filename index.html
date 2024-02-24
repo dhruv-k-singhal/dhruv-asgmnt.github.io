@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dhruv K Singhal - Portfolio</title>
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+  }
+  nav {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+  }
+  section {
+    padding: 50px;
+    text-align: center;
+  }
+  .projects, .contact {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .project-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 10px;
+    width: 300px;
+  }
+  form {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #555;
+  }
+  .error {
+    border-color: red;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Dhruv K Singhal</h1>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section id="about">
+  <h2>About Me</h2>
+  <p>Welcome to my portfolio! I am Dhruv K Singhal, a passionate web developer.</p>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="projects">
+    <div class="project-card">
+      <h3>SQL Injection</h3>
+      <p>n computing, SQL injection is a code injection technique used to attack data-driven applications, in which malicious SQL statements are inserted into an entry field for execution (e.g. to dump the database contents to the attacker).</p>
+      <img src="sqli.jpg" alt="Project 1">
+    </div>
+    <div class="project-card">
+      <h3>Antivirus</h3>
+      <p>Antivirus software (antivirus program) is a security program designed to prevent, detect, search and remove viruses and other types of malware from computers, networks and other devices.</p>
+      <img src="antivirus.jpg" alt="Project 2" style="width:250px;">
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact Me</h2>
+  <form id="contact-form">
+    <input type="text" id="name" placeholder="Your Name">
+    <input type="email" id="email" placeholder="Your Email">
+    <textarea id="message" placeholder="Your Message"></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+
+<script>
+  const form = document.getElementById('contact-form');
+  const nameInput = document.getElementById('name');
+  const emailInput = document.getElementById('email');
+  const messageInput = document.getElementById('message');
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    if (validateForm()) {
+      // Code to handle form submission (e.g., AJAX request)
+      alert('Form submitted successfully!');
+      form.reset();
+    }
+  });
+
+  function validateForm() {
+    let isValid = true;
+
+    if (nameInput.value.length < 3) {
+      isValid = false;
+      nameInput.classList.add('error');
+    } else {
+      nameInput.classList.remove('error');
+    }
+
+    if (!isValidEmail(emailInput.value)) {
+      isValid = false;
+      emailInput.classList.add('error');
+    } else {
+      emailInput.classList.remove('error');
+    }
+
+    if (messageInput.value.length < 10) {
+      isValid = false;
+      messageInput.classList.add('error');
+    } else {
+      messageInput.classList.remove('error');
+    }
+
+    return isValid;
+  }
+
+  function isValidEmail(email) {
+    // Very basic email validation
+    const emailRegex = /\S+@\S+\.\S+/;
+    return emailRegex.test(email);
+  }
+</script>
+
+</body>
+</html>
